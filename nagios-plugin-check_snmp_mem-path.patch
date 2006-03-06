@@ -1,0 +1,12 @@
+diff -uNr nagios-plugin-check_snmp_mem-0.9.orig/check_snmp_mem.pl nagios-plugin-check_snmp_mem-0.9/check_snmp_mem.pl
+--- nagios-plugin-check_snmp_mem-0.9.orig/check_snmp_mem.pl	2006-03-06 14:06:54.000000000 +0100
++++ nagios-plugin-check_snmp_mem-0.9/check_snmp_mem.pl	2006-03-06 14:33:17.000000000 +0100
+@@ -17,7 +17,7 @@
+ 
+ # Nagios specific
+ 
+-use lib "/usr/local/nagios/libexec";
++use lib "/usr/lib/nagios/plugins";
+ use utils qw(%ERRORS $TIMEOUT);
+ #my $TIMEOUT = 15;
+ #my %ERRORS=('OK'=>0,'WARNING'=>1,'CRITICAL'=>2,'UNKNOWN'=>3,'DEPENDENT'=>4);
