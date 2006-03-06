@@ -6,7 +6,7 @@ diff -uNr nagios-plugin-check_snmp_mem-0.9.orig/check_snmp_mem.pl nagios-plugin-
  # Nagios specific
  
 -use lib "/usr/local/nagios/libexec";
-+use lib "/usr/lib/nagios/plugins";
++use lib "@plugindir@";
  use utils qw(%ERRORS $TIMEOUT);
  #my $TIMEOUT = 15;
  #my %ERRORS=('OK'=>0,'WARNING'=>1,'CRITICAL'=>2,'UNKNOWN'=>3,'DEPENDENT'=>4);

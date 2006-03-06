@@ -17,7 +17,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_plugindir	%{_libdir}/nagios/plugins
 %define		_sysconfdir	/etc/nagios/plugins
-
 %define		_noautoreq 'perl(utils)'
 
 %description
@@ -32,6 +31,7 @@ systemach Linux/Unix,Cisco, HP Procurve.
 %setup -q -c -T
 install %{SOURCE0} .
 %patch0 -p1
+sed -i -e 's,@plugindir@,%{_plugindir},' check_snmp_mem.pl
 
 %install
 rm -rf $RPM_BUILD_ROOT
