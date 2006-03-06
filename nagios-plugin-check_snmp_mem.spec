@@ -7,6 +7,7 @@ Release:	0.1
 License:	GPL
 Group:		Networking
 Source0:	http://www.manubulon.com/nagios/check_snmp_mem.pl
+Patch0:		%{name}-path.patch
 # Source0-md5:	2b59e64724735eb5f4893b36c8057679
 URL:		http://www.manubulon.com/nagios/snmp_mem.html
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -30,6 +31,7 @@ systemach Linux/Unix,Cisco, HP Procurve.
 %prep
 %setup -q -c -T
 install %{SOURCE0} .
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
