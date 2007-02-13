@@ -1,6 +1,6 @@
 %include	/usr/lib/rpm/macros.perl
 Summary:	Nagios plugin to check system memory via SNMP
-Summary(pl.UTF-8):   Wtyczka Nagiosa do sprawdzania poprzez SNMP wykorzystania pamięci RAM i SWAP
+Summary(pl.UTF-8):	Wtyczka Nagiosa do sprawdzania poprzez SNMP wykorzystania pamięci RAM i SWAP
 Name:		nagios-plugin-check_snmp_mem
 Version:	0.9
 Release:	1
