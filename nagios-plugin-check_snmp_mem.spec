@@ -4,7 +4,7 @@ Summary:	Nagios plugin to check system memory via SNMP
 Summary(pl.UTF-8):	Wtyczka Nagiosa do sprawdzania poprzez SNMP wykorzystania pamięci RAM i SWAP
 Name:		nagios-plugin-%{plugin}
 Version:	0.9
-Release:	3
+Release:	4
 License:	GPL
 Group:		Networking
 Source0:	http://www.manubulon.com/nagios/check_snmp_mem.pl
@@ -34,6 +34,7 @@ systemach Linux/Unix, Cisco, HP Procurve.
 %setup -q -c -T
 install %{SOURCE0} %{plugin}
 %patch0 -p1
+%{__sed} -i -e 's,@plugindir@,%{plugindir},' %{plugin}
 
 %install
 rm -rf $RPM_BUILD_ROOT
