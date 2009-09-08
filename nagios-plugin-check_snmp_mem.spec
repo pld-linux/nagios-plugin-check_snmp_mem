@@ -4,11 +4,12 @@ Summary:	Nagios plugin to check system memory via SNMP
 Summary(pl.UTF-8):	Wtyczka Nagiosa do sprawdzania poprzez SNMP wykorzystania pamięci RAM i SWAP
 Name:		nagios-plugin-%{plugin}
 Version:	0.9
-Release:	2
+Release:	3
 License:	GPL
 Group:		Networking
 Source0:	http://www.manubulon.com/nagios/check_snmp_mem.pl
 Patch0:		%{name}-path.patch
+Source1:	%{plugin}.cfg
 # Source0-md5:	2b59e64724735eb5f4893b36c8057679
 URL:		http://www.manubulon.com/nagios/snmp_mem.html
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -31,24 +32,14 @@ systemach Linux/Unix, Cisco, HP Procurve.
 
 %prep
 %setup -q -c -T
-install %{SOURCE0} .
+install %{SOURCE0} %{plugin}
 %patch0 -p1
-%{__sed} -i -e 's,@plugindir@,%{plugindir},' %{plugin}.pl
-
-cat > nagios.cfg <<'EOF'
-# Usage:
-# %{plugin}!ARGUMENTS...
-define command {
-	command_name    %{plugin}
-	command_line    %{plugindir}/%{plugin} -H $HOSTADDRESS$ $ARG1$
-}
-EOF
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{plugindir}}
-install -p %{plugin}.pl $RPM_BUILD_ROOT%{plugindir}/%{plugin}
-cp -a nagios.cfg $RPM_BUILD_ROOT%{_sysconfdir}/%{plugin}.cfg
+install -p %{plugin} $RPM_BUILD_ROOT%{plugindir}
+%{__sed} -e 's,@plugindir@,%{plugindir},' %{SOURCE1} > $RPM_BUILD_ROOT%{_sysconfdir}/%{plugin}.cfg
 
 %clean
 rm -rf $RPM_BUILD_ROOT
