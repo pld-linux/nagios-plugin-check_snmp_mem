@@ -10,6 +10,7 @@ Group:		Networking
 Source0:	http://nagios.proy.org/check_snmp_mem.pl
 # Source0-md5:	f4b03cf520e6e4eab9dc6a67c88032d9
 Patch0:		%{name}-path.patch
+Patch1:		net-snmp-version.patch
 Source1:	%{plugin}.cfg
 URL:		http://nagios.proy.org/snmp_mem.html
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -34,15 +35,16 @@ systemach Linux/Unix, Cisco, HP Procurve.
 
 %prep
 %setup -qcT
-install -p %{SOURCE0} %{plugin}
+install -p %{SOURCE0} .
 %patch0 -p1
+%patch1 -p1
 
-%{__sed} -i -e 's,@plugindir@,%{plugindir},' %{plugin}
+%{__sed} -i -e 's,@plugindir@,%{plugindir},' %{plugin}.pl
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{plugindir}}
-install -p %{plugin} $RPM_BUILD_ROOT%{plugindir}
+install -p %{plugin}.pl $RPM_BUILD_ROOT%{plugindir}/%{plugin}
 %{__sed} -e 's,@plugindir@,%{plugindir},' %{SOURCE1} > $RPM_BUILD_ROOT%{_sysconfdir}/%{plugin}.cfg
 
 %clean
