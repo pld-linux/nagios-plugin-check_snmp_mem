@@ -1,0 +1,11 @@
+--- ./check_snmp_mem.pl	2012-02-06 20:44:24.000000000 +0200
++++ ./check_snmp_mem.pl	2014-09-15 22:07:59.000000000 +0300
+@@ -493,7 +491,7 @@
+   
+   my $n_status="OK";
+   my $n_output="Ram : " . $realused . "%, Swap : " . $swapused . "% :";
+-  if ((($o_critR!=0)&&($o_critR <= $realused)) || (($o_critS!=0)&&($o_critS <= $swapused))) {
++  if (($$resultat{$nets_swap_total} == 0) || (($o_critR!=0)&&($o_critR <= $realused)) || (($o_critS!=0)&&($o_critS <= $swapused))) {
+     $n_output .= " > " . $o_critR . ", " . $o_critS;
+     $n_status="CRITICAL";
+   } else {

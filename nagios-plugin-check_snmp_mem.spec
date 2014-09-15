@@ -11,6 +11,7 @@ Source0:	http://nagios.proy.org/check_snmp_mem.pl
 # Source0-md5:	f4b03cf520e6e4eab9dc6a67c88032d9
 Patch0:		%{name}-path.patch
 Patch1:		net-snmp-version.patch
+Patch2:		noswap-critical.patch
 Source1:	%{plugin}.cfg
 URL:		http://nagios.proy.org/snmp_mem.html
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -38,6 +39,7 @@ systemach Linux/Unix, Cisco, HP Procurve.
 install -p %{SOURCE0} .
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %{__sed} -i -e 's,@plugindir@,%{plugindir},' %{plugin}.pl
 
