@@ -1,13 +1,5 @@
 --- ./check_snmp_mem.pl	2012-02-06 20:44:24.000000000 +0200
 +++ ./check_snmp_mem.pl	2014-09-15 22:02:18.000000000 +0300
-@@ -13,6 +13,6 @@
- #
- 
- use strict;
--use Net::SNMP;
-+use Net::SNMP 5;
- use Getopt::Long;
- 
 @@ -462,9 +462,7 @@
  if (defined ($o_netsnmp)) {
  
